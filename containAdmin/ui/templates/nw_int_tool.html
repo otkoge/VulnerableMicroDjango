@@ -3,5 +3,12 @@
 {% block content %}
   <h1>{{title}}</h1>
 
-  {{ result|linebreaks }}
+    
+  {{ result | linebreaks }}
+
+  <form action="">
+      <input type="text", name="ip">
+      <input type="submit", value="ping">
+  </form>
+
 {% endblock content %}
