@@ -24,7 +24,7 @@ LOGOUT_REDIRECT_URL = "/"
 SECRET_KEY = '-1g4l@8#ir)0iat%gq)cgg-mrv@m8z#tv#3hm_w++#8(+h&n1s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -78,9 +78,13 @@ WSGI_APPLICATION = 'containAdmin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'postgres',
+                'USER': 'postgres',
+                'PASSWORD': 'postgres',
+                'HOST': 'db',
+                'PORT': 5432,
+            }
 }
 
 
@@ -121,6 +125,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'ui', 'static'),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
