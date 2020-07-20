@@ -2,7 +2,10 @@ import requests
 import sys
 
 
-TARGET = 'http://127.0.0.1:8000'
+r = requests.get('https://ifconfig.me')
+TARGET = f'{r.text}:8000'
+
+
 
 
 def authenticate_session(session, username, password):
