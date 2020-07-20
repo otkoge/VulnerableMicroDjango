@@ -35,7 +35,7 @@ def crawl(session):
 
 def do_test(username, password):
     for i in range(20):
-        print(f"Creating session {i}..."
+        print(f"Creating session {i}...")
         session = requests.Session()
         authenticate_session(session, username, password)
         crawl(session)
