@@ -3,7 +3,7 @@ import sys
 
 
 r = requests.get('https://ifconfig.me')
-TARGET = f'{r.text}:8000'
+TARGET = f'http://{r.text}:8000'
 
 
 
