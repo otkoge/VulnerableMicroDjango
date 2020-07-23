@@ -28,7 +28,7 @@ def crawl(session):
                       '/ifconfig',
                       '/route',
                       '/ping',
-                      '/ping?ip=1.1.1.1o']
+                      '/ping?ip=1.1.1.1']
     for page in pages_to_visit:
         url = f'{TARGET}{page}'
         r = session.get(url)
