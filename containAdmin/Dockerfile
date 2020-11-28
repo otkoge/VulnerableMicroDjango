@@ -1,5 +1,5 @@
-FROM python:3.8-alpine
-RUN  apk update && apk add --no-cache docker net-tools postgresql-dev gcc python3-dev musl-dev
+FROM python:3.8-buster
+RUN  apt-get update && apt-get install -y docker net-tools postgresql-server-dev-all gcc python3-dev musl-dev
 RUN mkdir -p /opt/app
 COPY requirements.txt /opt/app/
 ADD . /opt/app/containAdmin
