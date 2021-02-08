@@ -13,7 +13,7 @@ services:
       WAIT_HOSTS: db:5432
       WAIT_HOSTS_TIMEOUT: 60
       DOCKER_TLS_VERIFY: 1
-      DOCKER_HOST: tcp://172.18.0.1:9999
+      DOCKER_HOST: tcp://172.18.0.1:9998
     volumes:
       - static_volume:/opt/app/containAdmin/static
     depends_on:
