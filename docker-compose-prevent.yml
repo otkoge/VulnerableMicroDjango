@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: ./containAdmin
+    command: /bin/sh -c "/wait && /opt/app/containAdmin/manage.py migrate --noinput  && /opt/app/containAdmin/manage.py runserver 0.0.0.0:8000"
+    environment:
+      WAIT_HOSTS: db:5432
+      WAIT_HOSTS_TIMEOUT: 60
+      DOCKER_TLS_VERIFY: 1
+      DOCKER_HOST: tcp://172.18.0.1:9999
+    volumes:
+      - static_volume:/opt/app/containAdmin/static
+    depends_on:
+      - db
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/opt/app/containAdmin/static
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+volumes:
+  static_volume:
